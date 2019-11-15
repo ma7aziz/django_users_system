@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<style>
+    .main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding-left: 5%;
+        
+    }
+</style>
+{%if messages%}
+{%for message in messages%}
+<h4>{{message }}</h4>
+{%endfor%}
+{%endif%}
+<div class="main">
+    <div class="bio">
+<img src="{{user.profile.image.url}}" alt="" style="width: 150px; height: 150px; border-radius:50%">
+<h3>Username: {{user.username}} </h3>
+Bio: <p>{{user.profile.bio}}</p>
+<h4>Birthdate: {{user.profile.birthdate}}</h4>
+<h4>City: {{user.profile.city}} </h4>
+    </div>  
+
+
+    <!-- update profile form -->
+<div class="update-form">
+<h4 style="color: blue;">Update Profile: </h4>
+<form action="{% url 'profile' %}" method="POST">
+    
+    {% csrf_token %}
+    <input type="hidden" value="{{user.id}}">
+    {{form.as_p}}
+    <input type="submit" value="Save Changes">
+</form>
+</div>
+</div>
+{% endblock %}

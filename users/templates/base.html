@@ -2,23 +2,34 @@
     a {
         text-decoration: none;
         cursor: pointer;
-        color: black;
+        color: blue;
         
     }
+    .nav {
+        display: flex;
+      
+    }
+    .nav a {
+        margin: 10px 20px;
+    }
+    
 </style>
-<h1>Mysite</h1>
+<h1>Welcome to this website</h1>
 <hr>
 
-<a href="{% url 'home'%}">Home</a> \
+<div class="nav">
+<a href="{% url 'home'%}">Home</a> 
 {% if user.is_authenticated%}
-<a href="{%url 'password_change'%}">Change password</a>\
-<a href="{%url 'logout'%}">Log Out</a>\
-{%else%}
-<a href="{%url 'signup'%}">Signup</a>\
-<a href="{%url 'login'%}">login</a> \
-{%endif%}
+<a href="{%url 'profile' %}">Profile</a> 
+<a href="{%url 'password_change'%}">Change password</a> 
 {%if user.is_superuser%}
-<a href="{%url  'admin:index' %}">Admin Area</a>
+<a href="{%url  'admin:index' %}">Admin Area</a> 
 {% endif %}
+<a href="{%url 'logout'%}">Log Out</a>
+{%else%}
+<a href="{%url 'signup'%}">Signup</a>
+<a href="{%url 'login'%}">login</a> 
+{%endif%}
+</div>
 {%block content%} {%endblock%}
 

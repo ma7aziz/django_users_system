@@ -3,9 +3,16 @@
 {%block content%}
 
 <h1 style="text-transform: capitalize; color:grey">
-    Hello
-    {%if user.is_authenticated%} {{user.username}}  {% else %} Guest {%endif%}
+    Hello,
+    {%if user.is_authenticated%} {{user.username}}
+    {% else %} Guest ...
+    <br> Signup Or Login Now!
+    {%endif%}
 </h1>
+{% if user.is_superuser%}
 Total registered users: {{count}}
+{% endif %}
+
+
 
 {%endblock%}

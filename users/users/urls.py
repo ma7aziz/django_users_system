@@ -16,10 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from core import views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('', views.home, name='home'),
     path('signup', views.signup, name='signup'),
     path('admin/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls'))
-]
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('profile', views.profile, name='profile')
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
