@@ -10,12 +10,15 @@
         
     }
 </style>
+<!-- messages -->
 {%if messages%}
 {%for message in messages%}
 <h4>{{message }}</h4>
 {%endfor%}
 {%endif%}
+
 <div class="main">
+    <!-- view profile data  -->
     <div class="bio">
 <img src="{{user.profile.image.url}}" alt="" style="width: 150px; height: 150px; border-radius:50%">
 <h3>Username: {{user.username}} </h3>

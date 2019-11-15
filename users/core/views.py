@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from .forms import profile_update
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-# Create your views here.
+
 
 def home(request):
     count = User.objects.count()
@@ -28,6 +28,7 @@ def signup(request):
 
 @login_required
 def profile(request):
+    # update profile
     if request.method == 'POST':
 
         profile_form = profile_update(request.POST, instance=request.user.profile)
