@@ -1,0 +1,11 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<h1 style="text-transform: capitalize; color:grey">
+    Hello
+    {%if user.is_authenticated%} {{user.username}}  {% else %} Guest {%endif%}
+</h1>
+Total registered users: {{count}}
+
+{%endblock%}
